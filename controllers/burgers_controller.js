@@ -13,15 +13,21 @@ router.get("/", function(req, res) {
         res.render("index", hbsObj);
     })
 })
+router.get("/api/burgers", function(req, res) {
+    burger.selectAll(function(data) {
+        res.json(data);
+    })
+})
 
 router.post("/api/burgers", function(req, res) {
-    burger.insertOne("burger_name", req.body.burger_name, function(result) {
+    res.json(req.body)
+    burger.insertOne("burger_name", req.body.data , function(result) {
         res.json({ id: result.insertId });
     })
 })
 
 router.delete("/api/burgers/:id", function(req, res){
-    burger.updateOne("devoured", false, "id", req.params.id, function(result) {
+    burger.updateOne("devoured", 1, "id", req.params.id, function(result) {
         if (result.changedRows === 0) {
             return res.status(404).end();
         }
