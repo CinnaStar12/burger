@@ -11,4 +11,24 @@ $(function () {
         })
     });
 
+    $(".create-form").on("submit", function (e) {
+        e.preventDefault();
+        var burg = $("#burg").val();
+        var data = {burg}
+
+        $.ajax("/api/burgers/", {
+            method: "POST",
+            data: data
+        })
+        .then(function () {
+            console.log("Burger added!")
+            location.reload()
+        })
+        .catch(function (err) {
+            if(err){
+                throw err;
+            }
+        })
+    })
+
 });
