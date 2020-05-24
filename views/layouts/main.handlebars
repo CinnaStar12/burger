@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./public/style.css">
-    < </head>
+    </head>
 
 <body>
     {{{body}}}
@@ -27,13 +27,9 @@
         });
         $(".create-form").on("submit", function(event) {
             event.preventDefault();
-            var burgName = $("#burg").val().trim()
-            var newBurg = {
-                burger_name: burgName
-            }
             $.ajax("/api/burgers", {
                 type: "POST",
-                data: newBurg
+                data: {burger_name: $("#burg").val().trim()}
             }).then(
                 function() {
                     console.log("created new burger");

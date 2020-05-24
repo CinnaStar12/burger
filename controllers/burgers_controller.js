@@ -20,12 +20,7 @@ router.get("/api/burgers", function(req, res) {
 })
 
 router.post("/api/burgers", function(req, res) {
-<<<<<<< HEAD
-    burger.insertOne("burger_name", req.body, function(result) {
-=======
-    res.json(req.body)
-    burger.insertOne("burger_name", req.body.data, function(result) {
->>>>>>> 809fe7a7c39408a101a27acfee900c8c7cf27068
+    burger.insertOne("burger_name", req.body.burger_name, function(result) {
         res.json({ id: result.insertId });
     })
 })
